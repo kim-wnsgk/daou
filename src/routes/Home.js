@@ -35,6 +35,9 @@ function Home() {
                         <li>
                             <Link to="/board">게시판</Link>
                         </li>
+                        <li>
+                            <Link to="/lunch">점심메뉴추천</Link>
+                        </li>
                     </ul>
                 </div>
             </div>

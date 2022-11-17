@@ -1,9 +1,12 @@
+body {
+    background-color: antiquewhite;
+}
+
 .wrap {
     display: flex;
     flex-direction: column;
     height: 1000px;
     /*수정하기*/
-    background-color: antiquewhite;
 }
 
 .banner {

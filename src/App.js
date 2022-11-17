@@ -8,6 +8,7 @@ import Schedule from './routes/Schedule'
 import MeetingRoom from './routes/MeetingRoom'
 import Work from './routes/Work'
 import Board from './routes/Board'
+import Lunch from './routes/Lunch'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/work" element={<Work />} />
         <Route path="/board" element={<Board />} />
+        <Route path="/lunch" element={<Lunch />} />
       </Routes>
     </Router >
   );
