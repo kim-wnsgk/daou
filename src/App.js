@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Home from './routes/Home.js'
+import Schedule from './routes/Schedule'
+import MeetingRoom from './routes/MeetingRoom'
+import Work from './routes/Work'
+import Board from './routes/Board'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router basename={process.env.PUBLIC_URL}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/meetingroom" element={<MeetingRoom />} />
+        <Route path="/schedule" element={<Schedule />} />
+        <Route path="/work" element={<Work />} />
+        <Route path="/board" element={<Board />} />
+      </Routes>
+    </Router >
   );
 }
 
 export default App;
+
+
