@@ -10,7 +10,7 @@ import Work from './routes/Work'
 import Board from './routes/Board'
 import Lunch from './routes/Lunch'
 import BoardWrite from './routes/BoardWrite'
-
+import Profile from "./routes/Profile";
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
         <Route path="/board" element={<Board />} />
         <Route path="/board/write/:selector" element={<BoardWrite />} />
         <Route path="/lunch" element={<Lunch />} />
+        <Route path="/Profile" element={<Profile />} />
       </Routes>
     </Router >
   );
