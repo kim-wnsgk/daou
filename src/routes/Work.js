@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import './Work.module.css';
+import './Work.css';
 import {BarChart,Bar,XAxis} from 'recharts';
 
 function Work() {
@@ -25,7 +25,7 @@ function Work() {
   const [percentage,setPercentage] = useState(30);
   return (
     <div className='container'>
-      <div style={{flex:1}}>
+      <div className='header'>
       <h1> 근태 관리 </h1>
       </div>
     <div className='middle'>
@@ -55,7 +55,6 @@ function Work() {
 
     </div>
       <div className='bottom'>
-        뭐넣지
       </div>
     </div>
   );
