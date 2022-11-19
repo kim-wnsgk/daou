@@ -3,7 +3,6 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './Work.module.css';
 import {BarChart,Bar,XAxis} from 'recharts';
-import {firestore} from "./firebase";
 
 function Work() {
     
