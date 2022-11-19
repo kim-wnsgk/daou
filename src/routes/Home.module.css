@@ -66,6 +66,8 @@ body {}
     border : none;
     background-color:transparent;
     font-size: 30px;
+    cursor:pointer;
+    
 
 }
 .profile {
