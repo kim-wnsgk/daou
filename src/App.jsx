@@ -9,6 +9,7 @@ import MeetingRoom from './routes/MeetingRoom'
 import Work from './routes/Work'
 import Board from './routes/Board'
 import Lunch from './routes/Lunch'
+import BoardWrite from './routes/BoardWrite'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/work" element={<Work />} />
         <Route path="/board" element={<Board />} />
+        <Route path="/board/write/:selector" element={<BoardWrite />} />
         <Route path="/lunch" element={<Lunch />} />
       </Routes>
     </Router >
