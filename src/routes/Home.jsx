@@ -10,7 +10,7 @@ import Profile from './Profile';
 import Mafia from './Mafia'
 function Home() {
     
-    let [page,setPage] = useState(1);
+    let [page,setPage] = useState(0);
     
     return (
         <div className={styles.container}>
