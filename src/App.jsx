@@ -3,7 +3,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Home from './routes/Home.js'
+import Home from './routes/Home'
 import Schedule from './routes/Schedule'
 import MeetingRoom from './routes/MeetingRoom'
 import Work from './routes/Work'
