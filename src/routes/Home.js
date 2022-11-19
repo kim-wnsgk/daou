@@ -3,11 +3,11 @@ import styles from './Home.module.css'
 
 function Home() {
     return (
-        <div className={styles.wrap}>
+        <div className={styles.container}>
             <div className={styles.banner}>
                 logo
             </div>
-            <div className={styles.container}>
+            <div className={styles.contents}>
                 <div className={styles.menus}>
                     <ul>
                         <li>

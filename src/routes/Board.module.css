@@ -1,0 +1,50 @@
+.container {}
+
+.banner {
+    height: 200px;
+}
+
+.contents {
+    height: 800px;
+    display: flex;
+    margin: 0 20%;
+}
+
+.normalBoard {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+}
+
+.normal {
+    flex: 1;
+    background-color: white;
+    margin: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 25px rgb(0 0 0 / 7%);
+}
+
+.partBoard {
+    flex: 1;
+    background-color: white;
+    margin: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 25px rgb(0 0 0 / 7%);
+}
+
+.title {
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 30px;
+}
+
+.sideBanner {
+    position: fixed;
+    right: 10px;
+    width: 150px;
+    height: 300px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 25px rgb(0 0 0 / 7%);
+}

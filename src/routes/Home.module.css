@@ -1,23 +1,16 @@
-body {
-    background-color: antiquewhite;
-}
+body {}
 
-.wrap {
-    display: flex;
-    flex-direction: column;
-    height: 1000px;
+.container {
     /*수정하기*/
 }
 
 .banner {
-    margin: 0 auto;
-    flex: 1;
+    height: 200px;
 }
 
-.container {
-    flex: 3;
+.contents {
+    height: 600px;
     display: flex;
-
 }
 
 .menus {
