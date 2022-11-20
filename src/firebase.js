@@ -1,6 +1,8 @@
-import firebase from "firebase/app";
-import "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://firebase.google.com/docs/web/learn-more#config-object
 const firebaseConfig = {
     apiKey: "AIzaSyA0xgi6P9UcYzDK-FWeuKz9QpDPuG8zjSs",
     authDomain: "daou-870eb.firebaseapp.com",
@@ -11,9 +13,11 @@ const firebaseConfig = {
     measurementId: "G-QW0W6D6QER"
 };
 
-// firebaseConfig 정보로 firebase 시작
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-const db = firebaseApp.firestore();
 
-export {firebase, firebaseApp, db};
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+
+export {db}
