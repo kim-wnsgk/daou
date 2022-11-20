@@ -57,13 +57,6 @@ function Home() {
                 
             </div>
             </div>
-            <Link style={{color : 'black',textDecoration : 'none'}} to="/meetingroom">미팅</Link>
-            <Link style={{color : 'black',textDecoration : 'none'}} to="{?}"></Link>
-            <Link style={{color : 'black',textDecoration : 'none'}} to="{?}"></Link>
-            <Link style={{color : 'black',textDecoration : 'none'}} to="/schedule"></Link>
-            <Link style={{color : 'black',textDecoration : 'none'}} to="/work"></Link>
-            <Link style={{color : 'black',textDecoration : 'none'}} to="/board"></Link>
-            <Link style={{color : 'black',textDecoration : 'none'}} to="/lunch"></Link>
         </div>
     );
 }
