@@ -42,7 +42,7 @@ function Home() {
                     </div>
 
                     <div style={page==5?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu}>
-                    <button onClick={()=>{setPage(5)}} className={styles.button}>menu3</button>   
+                    <button onClick={()=>{setPage(5)}} className={styles.button}>Mafia</button>   
                     </div>
 
                     <div style={page==6?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu_left_bottom}>

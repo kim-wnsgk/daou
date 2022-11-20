@@ -8,21 +8,21 @@ function Profile() {
         <div className='top'>
             <div className='picture'>
                 <div className='image_envelope'>
-                    <img className='image' src={require('./favicon.ico')}/>
+                    <img className='image' src={require('./default.png')}/>
                 </div>
             </div>
             <div className='personal'>
-                        이름 : {/*name*/}
-                        나이 : {/*age*/}
-                        부서 : {/*department*/}
-                        금주 근무시간 : {/*spendTime*/}
+                <h3>{/*name*/}{/*position*/}님 안녕하세요.</h3>
+                <h3>{/*department*/}</h3>
+                <h3>금주 근무시간 : {/*spendTime*/}</h3>
             </div>
             <div className='plan'>
                 <p>일정</p>
             </div>
         </div>
         <div className='bottom'>
-            게시판 공지랑 부서게시판
+            <div className='board1'>게시판1</div>
+            <div className='board2'>게시판2</div>
         </div>
     </div>
   );
