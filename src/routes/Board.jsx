@@ -2,12 +2,22 @@ import styles from "./Board.module.css"
 import { useState } from 'react'
 import { Link } from "react-router-dom";
 
+import {db} from '../firebase'
+import { collection, query, where, addDoc, getDocs } from "firebase/firestore"; 
+
 function Board() {
     const [selector, setSelector] = useState('notice');
 
+    const getPosts = async () => {
+        const q = query(collection(db, "post"), where("selector", "==", selector));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+      })}
+
     return (
         <div className={styles.contents}>
-
+            <button onClick={() => {getPosts()}}>asd</button>
             <div className={styles.normal}>
                 <div className={styles.title}>
                     {selector === 'notice' ? <span>공지사항</span> : selector === 'free' ? <span>자유게시판</span> : selector === 'part' ? <span>부서별게시판</span> : null}
