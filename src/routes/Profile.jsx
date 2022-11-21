@@ -59,7 +59,14 @@ function Profile() {
 
                 </div>
                 <div className='plan'>
-                    <p>일정</p>
+                    <h2 style={{textAlign:'center'}}>일정</h2>
+                    <table>
+                        <thead>
+                            <td>이름</td>
+                            <td>시간</td>
+                            <td>장소</td>
+                        </thead>
+                    </table>
                 </div>
             </div>
             <div className='bottom'>
