@@ -29,7 +29,6 @@ function Work() {
   const [lodaing,setLoading] = useState(false);
   const [tasks,setTasks] = useState([])
   const [percentage, setPercentage] = useState(30);
-  //const day = String(date.getDay());
 
   const startWork = async () => {
     try {
@@ -44,8 +43,8 @@ function Work() {
       }
   }
   useEffect(()=>{
-    const q = query(collection(db,"work"),where('name','==','qwer'));
-    const unsub = onSnapshot(collection(db,"work"),(querySnapshot)=>{
+    const q = query(collection(db,"work"),where('email','==','qwer'),where('day','==',String(nowDate)));
+    const unsub = onSnapshot(q,(querySnapshot)=>{
       const items = [];
       querySnapshot.forEach((doc)=>{
         items.push(doc.data());
@@ -72,6 +71,7 @@ function Work() {
   return (
     <div className='container'>
       <div className='header'>
+        <h1>근태관리</h1>
       </div>
       <div className='middle'>
 

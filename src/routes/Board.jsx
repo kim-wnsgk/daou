@@ -14,7 +14,7 @@ function Board() {
 
     useEffect(()=>{
         const q = query(collection(db,"post"),where('selector','==',selector));
-        const unsub = onSnapshot(collection(db,"post"),(querySnapshot)=>{
+        const unsub = onSnapshot(q,(querySnapshot)=>{
           const items = [];
           querySnapshot.forEach((doc)=>{
             items.push(doc.data());
