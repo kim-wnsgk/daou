@@ -11,7 +11,6 @@ function Board() {
     const [post, setPost] = useState("");
     const [tasks, setTasks] = useState([]);
     const [lodaing, setLoading] = useState(false);
-    let count = 0;
 
     useEffect(() => {
         const q = query(collection(db, "post"), where('selector', '==', selector));
