@@ -5249,9 +5249,9 @@ find-up@^5.0.0:
     locate-path "^6.0.0"
     path-exists "^4.0.0"
 
-firebase@^9.14.0:
+firebase@^9.13.0:
   version "9.14.0"
-  resolved "https://registry.npmjs.org/firebase/-/firebase-9.14.0.tgz"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-9.14.0.tgz#407de4855092e607d3ee1fb222294ab2b45c4798"
   integrity sha512-wePrsf7W33mhT7RVXQavragoAgXb/NDm22vuhwJXkprrQ2Y9alrEKC5LTAtLJL3P2dHdDmeylS6PLZwWPEE79A==
   dependencies:
     "@firebase/analytics" "0.8.4"
@@ -7477,6 +7477,11 @@ mkdirp@~0.5.1:
   integrity sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==
   dependencies:
     minimist "^1.2.6"
+
+moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
 
 ms@2.0.0:
   version "2.0.0"
