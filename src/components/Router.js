@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+
 import Auth from '../routes/Auth';
 import Home from '../routes/Home';
 import Schedule from '../routes/Schedule';
@@ -13,12 +14,13 @@ import BoardWrite from '../routes/BoardWrite';
 import Profile from '../routes/Profile';
 
 const AppRouter = ({ isLoggedIn }) => {
+  console.log()
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         {isLoggedIn ? (
           <>
-            <Route path="/" element={<Home/>} />
+            <Route exact path="/" element={<Home/>} />
             <Route path="/meetingroom" element={<MeetingRoom />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/work" element={<Work />} />
@@ -28,7 +30,7 @@ const AppRouter = ({ isLoggedIn }) => {
             <Route path="/Profile" element={<Profile />} />
           </>
         ) : (
-          <Route path="/" element={<Auth/>} />
+          <Route exact path="/" element={<Auth/>} />
         )}
       </Routes>
     </Router>

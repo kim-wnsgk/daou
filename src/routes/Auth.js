@@ -1,6 +1,7 @@
 import { async } from "@firebase/util";
 import {
   createUserWithEmailAndPassword,
+  getAuth,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import React, { useState } from "react";
@@ -11,7 +12,6 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState();
-  console.log(email, password);
 
   const onChange = (event) => {
     const target = event.target.name;
@@ -25,7 +25,7 @@ const Auth = () => {
   const onSubmitSignIn = async (event) => {
     try {
       const data = await createUserWithEmailAndPassword(
-        authService,
+        getAuth(),
         email,
         password
       );
@@ -37,11 +37,13 @@ const Auth = () => {
 
   const onSubmitLogIn = async (event) => {
     try {
+      event.preventDefault();
       const data = await signInWithEmailAndPassword(
-        authService,
+        getAuth(),
         email,
         password
       );
+      console.log("okay");
     } catch (error) {
       console.log(error);
     } finally {

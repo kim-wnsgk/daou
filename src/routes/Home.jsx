@@ -13,7 +13,6 @@ function Home() {
     
     let [page,setPage] = useState(0);
     
-    
     return (
         
         <div className={styles.container}>
@@ -28,38 +27,38 @@ function Home() {
                 <div className={styles.inside}>
                 <div className={styles.menus}>
 
-                    <div style={page==0?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu_left_top}>
+                    <div style={page===0?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu_left_top}>
                         <button onClick={()=>{setPage(0)}} className={styles.button}>Profile</button>
                     </div>
 
-                    <div style={page==1?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu}>
+                    <div style={page===1?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu}>
                         <button  onClick={()=>{setPage(1); console.log("hi")}} className={styles.button}>MeetingRoom</button>
                     </div>
 
-                    <div style={page==2?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu}>
+                    <div style={page===2?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu}>
                     <button  onClick={()=>{setPage(2)}} className={styles.button}>Schedule</button>
                     </div>
 
-                    <div style={page==3?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu}>
+                    <div style={page===3?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu}>
                     <button  onClick={()=>{setPage(3)}} className={styles.button}>Work</button>
                     </div>
 
-                    <div style={page==4?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu}>
+                    <div style={page===4?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu}>
                     <button  onClick={()=>{setPage(4)}} className={styles.button}>Board</button>
                     </div>
 
-                    <div style={page==5?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu}>
+                    <div style={page===5?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu}>
                     <button onClick={()=>{setPage(5)}} className={styles.button}>Mafia</button>   
                     </div>
 
-                    <div style={page==6?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu_left_bottom}>
+                    <div style={page===6?{backgroundColor: 'white'}:{backgroundColor:'aqua'}} className={styles.menu_left_bottom}>
                     <button onClick={()=>{setPage(6)}} className={styles.button}>Lunch</button>  
                     </div>
                     
                 </div>
                 <div className={styles.profile}>
                     {/*페이지 추가하고 나서 하자!*/}
-                    {page==0? (<Profile />): page==1?(<MeetingRoom/>):page==2?(<Schedule/>):page==3?(<Work/>):page==4?(<Board/>):page==5?(<Mafia/>):(<Lunch/>)}
+                    {page===0? (<Profile />): page===1?(<MeetingRoom/>):page===2?(<Schedule/>):page===3?(<Work/>):page===4?(<Board/>):page===5?(<Mafia/>):(<Lunch/>)}
                 </div>
                 
             </div>
