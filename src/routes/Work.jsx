@@ -4,7 +4,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import './Work.css';
 import { BarChart, Bar, XAxis } from 'recharts';
 import {db} from '../firebase'
-import { collection, query, onSnapshot, addDoc, getDocs,where} from "firebase/firestore"; 
+import { collection, query, onSnapshot, addDoc, getDocs,where, updateDoc} from "firebase/firestore"; 
 import moment from 'moment';
 function Work() {
 
@@ -29,26 +29,40 @@ function Work() {
   const [lodaing,setLoading] = useState(false);
   const [tasks,setTasks] = useState([])
   const [percentage, setPercentage] = useState(30);
-
+  const [id,setId] = useState("");
+  
+  const endWork = async () =>{
+    updateDoc(collection(db,"work",id),{
+      end : nowDate,
+    })
+  }
   const startWork = async () => {
+    if(!tasks[0]){
     try {
         await addDoc(collection(db, "work"), {
           email: "qwer",
           day :nowDate,
           start : nowTime,
           end : "",
+          work : ""
         });
       } catch (e) {
         console.error("Error adding document: ", e);
-      }
+      }}
+    else{
+      alert('이미 출근 했습니다!')
+    }
   }
   useEffect(()=>{
     const q = query(collection(db,"work"),where('email','==','qwer'),where('day','==',String(nowDate)));
     const unsub = onSnapshot(q,(querySnapshot)=>{
       const items = [];
+      const id="";
       querySnapshot.forEach((doc)=>{
         items.push(doc.data());
+        id = doc.id
       });
+      setId(id);
       setTasks(items);
     });
     return () =>{
@@ -86,11 +100,12 @@ function Work() {
 
         {/*일일*/}
         <div className="day_container">
+          <h2>금일업무</h2>
           <div className="day_progress">
-            <CircularProgressbar className="circle" value={percentage} text={'${percentage}%'} />
+            <CircularProgressbar className="circle" value={percentage} text={`${percentage}%`} />
           </div>
           {tasks.map((task)=>(
-            <div>{timeSpend(String(nowTime),String(task.start))}</div>
+            <div>금일 업무시간 : {timeSpend(String(nowTime),String(task.start))}</div>
           )
 
           )}
