@@ -63,12 +63,32 @@ function Profile() {
                 </div>
                 <div className='plan'>
                     <h2>일정</h2>
-                    <table>
+                    <table style={{ margin: '30px' }}>
                         <thead>
                             <td>이름</td>
                             <td>시간</td>
                             <td>장소</td>
                         </thead>
+                        <tbody>
+                            <td className='inner'>공부하기</td>
+                            <td className='inner'>11.22</td>
+                            <td className='inner'>집</td>
+                        </tbody>
+                        <tbody>
+                            <td className='inner'>과제하기</td>
+                            <td className='inner'>11.31</td>
+                            <td className='inner'>단국대학교 도서관</td>
+                        </tbody>
+                        <tbody>
+                            <td className='inner'>토익 시험</td>
+                            <td className='inner'>12.06</td>
+                            <td className='inner'>대지고등학교</td>
+                        </tbody>
+                        <tbody>
+                            <td className='inner'>수영하기</td>
+                            <td className='inner'>11.21</td>
+                            <td className='inner'>아르피아 스포츠센터</td>
+                        </tbody>
                     </table>
                 </div>
             </div>
