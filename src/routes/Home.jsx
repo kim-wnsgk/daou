@@ -19,7 +19,7 @@ function Home() {
         <div className={styles.container}>
 
             <div className={styles.banner}>
-                <img src="../img/officeLogo.png" alt="logo" />
+                <img src="officeLogo.png" alt="logo" className={styles.logo} />
                 <div
                     className={styles.logoutBt}
                     value="logout" onClick={() => {
@@ -31,31 +31,31 @@ function Home() {
                 <div className={styles.inside}>
                     <div className={styles.menus}>
 
-                        <div style={page === 0 ? { backgroundColor: 'white' } : { backgroundColor: 'aqua' }} className={styles.menu_left_top}>
+                        <div style={page === 0 ? { backgroundColor: 'white', boxShadow: '0px 4px 25px 4px rgb(0 0 0 / 20%)' } : { backgroundColor: 'aliceblue', opacity: '0.5' }} className={styles.menu}>
                             <button onClick={() => { setPage(0) }} className={styles.button}>Profile</button>
                         </div>
 
-                        <div style={page === 1 ? { backgroundColor: 'white' } : { backgroundColor: 'aqua' }} className={styles.menu}>
+                        <div style={page === 1 ? { backgroundColor: 'white', boxShadow: '4px 4px 25px 4px rgb(0 0 0 / 20%)' } : { backgroundColor: 'aliceblue', opacity: '0.5' }} className={styles.menu}>
                             <button onClick={() => { setPage(1); console.log("hi") }} className={styles.button}>MeetingRoom</button>
                         </div>
 
-                        <div style={page === 2 ? { backgroundColor: 'white' } : { backgroundColor: 'aqua' }} className={styles.menu}>
+                        <div style={page === 2 ? { backgroundColor: 'white', boxShadow: '0px 4px 25px 4px rgb(0 0 0 / 20%)' } : { backgroundColor: 'aliceblue', opacity: '0.5' }} className={styles.menu}>
                             <button onClick={() => { setPage(2) }} className={styles.button}>Schedule</button>
                         </div>
 
-                        <div style={page === 3 ? { backgroundColor: 'white' } : { backgroundColor: 'aqua' }} className={styles.menu}>
+                        <div style={page === 3 ? { backgroundColor: 'white', boxShadow: '0px 4px 25px 4px rgb(0 0 0 / 20%)' } : { backgroundColor: 'aliceblue', opacity: '0.5' }} className={styles.menu}>
                             <button onClick={() => { setPage(3) }} className={styles.button}>Work</button>
                         </div>
 
-                        <div style={page === 4 ? { backgroundColor: 'white' } : { backgroundColor: 'aqua' }} className={styles.menu}>
+                        <div style={page === 4 ? { backgroundColor: 'white', boxShadow: '0px 4px 25px 4px rgb(0 0 0 / 20%)' } : { backgroundColor: 'aliceblue', opacity: '0.5' }} className={styles.menu}>
                             <button onClick={() => { setPage(4) }} className={styles.button}>Board</button>
                         </div>
 
-                        <div style={page === 5 ? { backgroundColor: 'white' } : { backgroundColor: 'aqua' }} className={styles.menu}>
+                        <div style={page === 5 ? { backgroundColor: 'white', boxShadow: '0px 4px 25px 4px rgb(0 0 0 / 20%)' } : { backgroundColor: 'aliceblue', opacity: '0.5' }} className={styles.menu}>
                             <button onClick={() => { setPage(5) }} className={styles.button}>Mafia</button>
                         </div>
 
-                        <div style={page === 6 ? { backgroundColor: 'white' } : { backgroundColor: 'aqua' }} className={styles.menu_left_bottom}>
+                        <div style={page === 6 ? { backgroundColor: 'white', boxShadow: '0px 4px 25px 4px rgb(0 0 0 / 20%)' } : { backgroundColor: 'aliceblue', opacity: '0.5' }} className={styles.menu}>
                             <button onClick={() => { setPage(6) }} className={styles.button}>Lunch</button>
                         </div>
 
