@@ -1,23 +1,33 @@
 import styles from "./Board.module.css"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 
 import {db} from '../firebase'
-import { collection, query, where, addDoc, getDocs } from "firebase/firestore"; 
+import {collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, where, onSnapshot} from "firebase/firestore"
+
 
 function Board() {
     const [selector, setSelector] = useState('notice');
+    const [post, setPost] = useState("");
+    const [tasks, setTasks] = useState([]);
+    const [lodaing, setLoading] = useState(false);
 
-    const getPosts = async () => {
-        const q = query(collection(db, "post"), where("selector", "==", selector));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
-      })}
+    useEffect(()=>{
+        const q = query(collection(db,"post"),where('selector','==',selector));
+        const unsub = onSnapshot(collection(db,"post"),(querySnapshot)=>{
+          const items = [];
+          querySnapshot.forEach((doc)=>{
+            items.push(doc.data());
+          });
+          setTasks(items);
+        });
+        return () =>{
+          unsub();
+        };
+      },[]);
 
     return (
         <div className={styles.contents}>
-            <button onClick={() => {getPosts()}}>asd</button>
             <div className={styles.normal}>
                 <div className={styles.title}>
                     {selector === 'notice' ? <span>공지사항</span> : selector === 'free' ? <span>자유게시판</span> : selector === 'part' ? <span>부서별게시판</span> : null}
@@ -28,15 +38,14 @@ function Board() {
                         <span style={{ flex: 3 }}>제목</span>
                         <span style={{ flex: 1, color: 'red', fontWeight: 'bold', textAlign: 'center' }}>긴급</span>
                     </li>
-                    <li className={styles.post}>제목</li>
-                    <li className={styles.post}>제목</li>
-                    <li className={styles.post}>제목</li>
-                    <li className={styles.post}>제목</li>
-                    <li className={styles.post}>제목</li>
-                    <li className={styles.post}>제목</li>
-                    <li className={styles.post}>제목</li>
-                    <li className={styles.post}>제목</li>
-                    <li className={styles.post}>제목</li>
+                    {tasks.map((task)=>(
+                        <li className={styles.post}>
+                        <span style={{ flex: 0.5 }}>{task.date}</span>
+                        <span style={{ flex: 3 }}>{task.title}</span>
+                        <span style={{ flex: 1, color: 'red', fontWeight: 'bold', textAlign: 'center' }}>{task.content}</span>
+                        
+                    </li>
+                    ))}
                 </ul>
             </div>
             <div className={styles.sideBanner}>

@@ -1,9 +1,10 @@
 import styles from "./BoardWrite.module.css"
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, useParams } from "react-router-dom";
 
 import {db} from '../firebase'
-import { collection, addDoc, getDocs } from "firebase/firestore"; 
+import { collection, addDoc} from "firebase/firestore"; 
+import moment from "moment"
 
 
 
@@ -11,25 +12,20 @@ function BoardWrite() {
     const { selector } = useParams();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [date, setDate] = useState(new Date());
-    useEffect(() => {
-        let temp = new Date()
-        setDate(temp.toLocaleDateString())
-    }, [])
+    const nowDate = moment().format('MM-DD');
 
     const addPost = async () => {
         try {
-            const docRef = await addDoc(collection(db, "post"), {
-              title: {title},
-              content: {content},
-              date: {date},
-              selector:{selector}
+            await addDoc(collection(db, "post"), {
+                content : content,
+                date : nowDate,
+                selector : selector,
+                title : title,
             });
-            console.log("Document written with ID: ", docRef.id);
           } catch (e) {
             console.error("Error adding document: ", e);
           }
-    }
+      }
     return (
         <div className={styles.container}>
             <div className={styles.banner}>
@@ -63,8 +59,8 @@ function BoardWrite() {
                 <div className={styles.write}>
                     <Link 
                         to="/"
-                        onClick={() => {addPost()}
-                    }>글 작성</Link>
+                        onClick={addPost}
+                    >글 작성</Link>
 
                 </div>
             </div>
