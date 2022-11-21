@@ -2,8 +2,8 @@ import styles from "./Board.module.css"
 import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 
-import {db} from '../firebase'
-import {collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, where, onSnapshot} from "firebase/firestore"
+import { db } from '../firebase'
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, where, onSnapshot } from "firebase/firestore"
 
 
 function Board() {
@@ -11,20 +11,21 @@ function Board() {
     const [post, setPost] = useState("");
     const [tasks, setTasks] = useState([]);
     const [lodaing, setLoading] = useState(false);
+    let count = 0;
 
-    useEffect(()=>{
-        const q = query(collection(db,"post"),where('selector','==',selector));
-        const unsub = onSnapshot(q,(querySnapshot)=>{
-          const items = [];
-          querySnapshot.forEach((doc)=>{
-            items.push(doc.data());
-          });
-          setTasks(items);
+    useEffect(() => {
+        const q = query(collection(db, "post"), where('selector', '==', selector));
+        const unsub = onSnapshot(q, (querySnapshot) => {
+            const items = [];
+            querySnapshot.forEach((doc) => {
+                items.push(doc.data());
+            });
+            setTasks(items);
         });
-        return () =>{
-          unsub();
+        return () => {
+            unsub();
         };
-      },[]);
+    }, [selector]);
 
     return (
         <div className={styles.contents}>
@@ -33,18 +34,12 @@ function Board() {
                     {selector === 'notice' ? <span>공지사항</span> : selector === 'free' ? <span>자유게시판</span> : selector === 'part' ? <span>부서별게시판</span> : null}
                 </div>
                 <ul className={styles.posts}>
-                    <li className={styles.post}>
-                        <span style={{ flex: 0.5 }}>19:08</span>
-                        <span style={{ flex: 3 }}>제목</span>
-                        <span style={{ flex: 1, color: 'red', fontWeight: 'bold', textAlign: 'center' }}>긴급</span>
-                    </li>
-                    {tasks.map((task)=>(
+                    {tasks.map((task) => (
                         <li className={styles.post}>
-                        <span style={{ flex: 0.5 }}>{task.date}</span>
-                        <span style={{ flex: 3 }}>{task.title}</span>
-                        <span style={{ flex: 1, color: 'red', fontWeight: 'bold', textAlign: 'center' }}>{task.content}</span>
-                        
-                    </li>
+                            <span style={{ flex: 0.5 }}>{task.date}</span>
+                            <span style={{ flex: 3 }}>{task.title}</span>
+                            <span style={{ flex: 1, fontWeight: 'bold', textAlign: 'center' }}>{task.content}</span>
+                        </li>
                     ))}
                 </ul>
             </div>
