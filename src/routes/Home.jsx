@@ -8,12 +8,19 @@ import Schedule from './Schedule';
 import MeetingRoom from './MeetingRoom';
 import Profile from './Profile';
 import Mafia from './Mafia'
+import { authService } from '../firebase';
 function Home() {
     
     let [page,setPage] = useState(0);
     
+    
     return (
+        
         <div className={styles.container}>
+            <button value="logout" onClick={()=>{
+                authService.signOut()
+            }
+            }></button>
             <div className={styles.banner}>
                 logo
             </div>
