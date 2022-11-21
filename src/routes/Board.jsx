@@ -11,7 +11,7 @@ function Board() {
     const [post, setPost] = useState("");
     const [tasks, setTasks] = useState([]);
     const [lodaing, setLoading] = useState(false);
-
+    
     useEffect(()=>{
         const q = query(collection(db,"post"),where('selector','==',selector));
         const unsub = onSnapshot(q,(querySnapshot)=>{
@@ -24,7 +24,7 @@ function Board() {
         return () =>{
           unsub();
         };
-      },[]);
+      },[selector]);
 
     return (
         <div className={styles.contents}>
