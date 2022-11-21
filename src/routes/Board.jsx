@@ -37,8 +37,8 @@ function Board() {
                     {tasks.map((task) => (
                         <li className={styles.post}>
                             <span style={{ flex: 0.5 }}>{task.date}</span>
-                            <span style={{ flex: 3 }}>{task.title}</span>
-                            <span style={{ flex: 1, fontWeight: 'bold', textAlign: 'center' }}>{task.content}</span>
+                            <span style={{ flex: 4 }}>{task.title}</span>
+                            <span style={{ flex: 1, fontSize: '0.5em' }}>{task.email}</span>
                         </li>
                     ))}
                 </ul>

@@ -2,10 +2,11 @@ import styles from "./BoardWrite.module.css"
 import { useState } from 'react'
 import { Link, useParams } from "react-router-dom";
 
-import {db} from '../firebase'
-import { collection, addDoc} from "firebase/firestore"; 
+import { db } from '../firebase'
+import { collection, addDoc } from "firebase/firestore";
 import moment from "moment"
-
+import { getAuth } from "firebase/auth";
+import userEvent from "../../node_modules/@testing-library/user-event/dist/index";
 
 
 function BoardWrite() {
@@ -17,15 +18,16 @@ function BoardWrite() {
     const addPost = async () => {
         try {
             await addDoc(collection(db, "post"), {
-                content : content,
-                date : nowDate,
-                selector : selector,
-                title : title,
+                content: content,
+                date: nowDate,
+                selector: selector,
+                title: title,
+                email: getAuth().currentUser.email
             });
-          } catch (e) {
+        } catch (e) {
             console.error("Error adding document: ", e);
-          }
-      }
+        }
+    }
     return (
         <div className={styles.container}>
             <div className={styles.banner}>
@@ -57,7 +59,7 @@ function BoardWrite() {
                     </div>
                 </div>
                 <div className={styles.write}>
-                    <Link 
+                    <Link
                         to="/"
                         onClick={addPost}
                     >글 작성</Link>
