@@ -2,7 +2,8 @@ import React,{useEffect,useState} from 'react';
 import './Profile.css';
 import { db } from '../firebase'
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, where, onSnapshot } from "firebase/firestore"
-
+import "../components/App"
+import userEvent from '../../node_modules/@testing-library/user-event/dist/index';
 
 function Profile() {
     const [tasks, setTasks] = useState([]);
