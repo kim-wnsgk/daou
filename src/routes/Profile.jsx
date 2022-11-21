@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import './Profile.css';
 import { db } from '../firebase'
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, where, onSnapshot } from "firebase/firestore"
+import "../components/App"
+import moment from 'moment';
+import Schedule from './Schedule';
 import { getAuth } from "firebase/auth";
 
-import "../components/App"
-import userEvent from '../../node_modules/@testing-library/user-event/dist/index';
-
 function Profile() {
+    const nowDate = moment().format('YY-MM-DD');
     const [tasks, setTasks] = useState([]);
+    const [tas, setTas] = useState([]);
 
     useEffect(() => {
         const q = query(collection(db, "post"), where('selector', 'in', ['part', 'notice']));
@@ -18,6 +20,20 @@ function Profile() {
                 items.push(doc.data());
             });
             setTasks(items);
+        });
+        return () => {
+            unsub();
+        };
+    }, []);
+    useEffect(() => {
+        const q = query(collection(db, "work"), where('email', '==', 'qwer'));
+        const unsub = onSnapshot(q, (querySnapshot) => {
+            const items = [];
+            querySnapshot.forEach((doc) => {
+                items.push(doc.data());
+            });
+            setTas(items);
+
         });
         return () => {
             unsub();
@@ -35,7 +51,12 @@ function Profile() {
                 <div className='personal'>
                     <h3>{/*name*/}{/*position*/}{getAuth().currentUser.email}님 안녕하세요.</h3>
                     <h3>{/*department*/}</h3>
-                    <h3>금주 근무시간 : {/*spendTime*/}</h3>
+                    {tas.map((ta) => (
+                        ta.day == nowDate ?
+                            <h3>금일 근무시간 : {ta.work}</h3>
+                            : <></>
+                    ))}
+
                 </div>
                 <div className='plan'>
                     <p>일정</p>
