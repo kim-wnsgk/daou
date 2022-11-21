@@ -4,36 +4,37 @@ import 'react-circular-progressbar/dist/styles.css';
 import './Work.css';
 import { BarChart, Bar, XAxis } from 'recharts';
 import {db} from '../firebase'
-import { collection, query, onSnapshot, addDoc, getDocs,where, updateDoc} from "firebase/firestore"; 
+import { doc,collection, query, onSnapshot, addDoc, getDocs,where, updateDoc} from "firebase/firestore"; 
 import moment from 'moment';
 function Work() {
 
   const data = [
     {name: '월',
-      uv: 4000,},
+      uv: 8.5,},
     {name: '화',
-      uv: 3000,},
+      uv: 8.0,},
     {name: '수',
-      uv: 2000,},
+      uv: 7.5,},
     {name: '목',
-      uv: 2780,},
+      uv: 8.0,},
     {name: '금',
-      uv: 1890,},
+      uv: 8.0,},
     {name: '토',
-      uv: 2390,},
+      uv: 0,},
     {name: '일',
-      uv: 3490,},
+      uv: 3,},
   ];
   const nowDate = moment().format('YY-MM-DD');
   const nowTime = moment().format('HH:mm');
   const [lodaing,setLoading] = useState(false);
   const [tasks,setTasks] = useState([])
   const [percentage, setPercentage] = useState(30);
-  const [id,setId] = useState("");
+  var id="";
   
   const endWork = async () =>{
-    updateDoc(collection(db,"work",id),{
-      end : nowDate,
+    updateDoc(doc(db,"work",id),{
+      end : nowTime,
+      work : timeSpend(String(nowTime),String(tasks[0].start))
     })
   }
   const startWork = async () => {
@@ -57,13 +58,12 @@ function Work() {
     const q = query(collection(db,"work"),where('email','==','qwer'),where('day','==',String(nowDate)));
     const unsub = onSnapshot(q,(querySnapshot)=>{
       const items = [];
-      const id="";
+      var uid = "";
       querySnapshot.forEach((doc)=>{
         items.push(doc.data());
-        id = doc.id
       });
-      setId(id);
       setTasks(items);
+
     });
     return () =>{
       unsub();
@@ -88,7 +88,6 @@ function Work() {
         <h1>근태관리</h1>
       </div>
       <div className='middle'>
-
         {/*주간*/}
         <div className='week_container'>
           <div><p>주간업무</p><div style={{ textAlign: 'right' }}>금주잔여시간</div></div>
@@ -100,7 +99,7 @@ function Work() {
 
         {/*일일*/}
         <div className="day_container">
-          <h2>금일업무</h2>
+          <h2 className='cent'>금일업무</h2>
           <div className="day_progress">
             <CircularProgressbar className="circle" value={percentage} text={`${percentage}%`} />
           </div>
@@ -111,7 +110,7 @@ function Work() {
           )}
           <div className='day_footer'>
             <button onClick={startWork} className='button1'>출근하기</button>
-            <button className='button1'>퇴근하기</button>
+            <button onClick={endWork} className='button1'>퇴근하기</button>
           </div>
         </div>
       </div>

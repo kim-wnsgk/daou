@@ -28,6 +28,10 @@
     margin-top: 15px;
     margin-bottom: -10px;
     text-align: center;
+
+  }
+  .center{
+    text-align: center;
   }
   .day_progress{
     flex:1;
@@ -47,9 +51,14 @@
   }
   .button1{
     flex:1;
+    cursor : pointer;
     margin-top:15px;
     border-radius: 20px;
     border:0ch;
+    height:30px
+  }
+  .button1:hover{
+    background-color:beige;
   }
   .week_container{
     display: flex;
