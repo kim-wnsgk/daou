@@ -62,6 +62,7 @@
     text-align: center;
     display: flex;
     margin: 20px;
+    background-color: rgb(255, 231, 254);
     border-radius: 10px;
     box-shadow: 0px 4px 25px rgb(0 0 0 / 10%);
 }
