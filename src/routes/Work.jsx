@@ -6,6 +6,7 @@ import { BarChart, Bar, XAxis } from 'recharts';
 import { db } from '../firebase'
 import { doc, collection, query, onSnapshot, addDoc, getDocs, where, updateDoc, orderBy } from "firebase/firestore";
 import moment from 'moment';
+import { getAuth } from "firebase/auth";
 function Work() {
 
   const data = [
@@ -55,7 +56,7 @@ function Work() {
   const endWork = async () => {
     if (tasks[0].day == nowDate) {
       
-      const q = query(collection(db, "work"), where('email', '==', 'qwer'),orderBy('day','asc'));
+      const q = query(collection(db, "work"), where('email', '==',getAuth().currentUser.email),orderBy('day','asc'));
       const unsub = onSnapshot(q, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
           setUid(doc.id);
@@ -75,7 +76,7 @@ function Work() {
     else {
       try {
         await addDoc(collection(db, "work"), {
-          email: "qwer",
+          email: getAuth().currentUser.email,
           day: nowDate,
           start: nowTime,
           end: "",
@@ -87,7 +88,7 @@ function Work() {
     }
   }
   useEffect(() => {
-    const q = query(collection(db, "work"), where('email', '==', 'qwer'));
+    const q = query(collection(db, "work"), where('email', '==', 'qwer'),orderBy("day","asc"));
     const unsub = onSnapshot(q, (querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
